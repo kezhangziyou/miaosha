@@ -1,5 +1,10 @@
 package com.imooc.miaosha.result;
-
+/**
+ * @description 返回通用类
+ * @author zhangke
+ * @date 10:42 AM 2019/12/13
+ * @version 1.0
+ **/
 public class Result<T> {
 	private int code;
 	private String msg;

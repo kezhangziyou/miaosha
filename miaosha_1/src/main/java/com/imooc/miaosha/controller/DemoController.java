@@ -34,8 +34,9 @@ public class DemoController {
 	}
 
 	/**
-	 * @param model
 	 * http://localhost:8080/demo/thymeleaf
+	 * @param model
+	 *
 	 * @return
 	 */
 	@RequestMapping("/thymeleaf")
