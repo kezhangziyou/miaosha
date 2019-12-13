@@ -16,7 +16,8 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 import com.imooc.miaosha.domain.MiaoshaUser;
 import com.imooc.miaosha.service.MiaoshaUserService;
 /**
- * @description 参数分解器
+ * @description 自定义参数解析，通过 cookie 从 redis 缓存中查询当前登录的用户信息，
+ * https://www.jianshu.com/p/40606baf49b8
  * @author zhangke
  * @date 4:25 PM 2019/12/9
  * @version 1.0
@@ -46,6 +47,7 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 			return null;
 		}
 		String token = StringUtils.isEmpty(paramToken)?cookieToken:paramToken;
+		//通过获取 token，然后查询用户信息
 		return userService.getByToken(response, token);
 	}
 

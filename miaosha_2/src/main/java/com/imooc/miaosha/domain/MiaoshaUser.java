@@ -1,11 +1,28 @@
 package com.imooc.miaosha.domain;
 
 import java.util.Date;
-
+/**
+ * @description 秒杀用户
+ * @author zhangke
+ * @date 11:19 AM 2019/12/13
+ * @version 1.0
+ **/
 public class MiaoshaUser {
+	/**
+	 *
+	 */
 	private Long id;
+	/**
+	 *昵称
+	 */
 	private String nickname;
+	/**
+	 *两次 MD5加密密码
+	 */
 	private String password;
+	/**
+	 *加密盐
+	 */
 	private String salt;
 	private String head;
 	private Date registerDate;

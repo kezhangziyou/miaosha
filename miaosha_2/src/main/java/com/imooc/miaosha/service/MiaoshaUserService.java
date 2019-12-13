@@ -33,7 +33,12 @@ public class MiaoshaUserService {
 	
 	@Autowired
 	RedisService redisService;
-	
+
+	/**
+	 * 通过 id 得到用户信息
+	 * @param id 手机号
+	 * @return
+	 */
 	public MiaoshaUser getById(long id) {
 		return miaoshaUserDao.getById(id);
 	}
@@ -57,9 +62,9 @@ public class MiaoshaUserService {
 	}
 
 	/**
-	 *
+	 * 登录
 	 * @param response
-	 * @param loginVo
+	 * @param loginVo 登录表单
 	 * @return
 	 */
 	public boolean login(HttpServletResponse response, LoginVo loginVo) {
@@ -69,20 +74,21 @@ public class MiaoshaUserService {
 		//拿到 from 表单的密码
 		String mobile = loginVo.getMobile();
 		String formPass = loginVo.getPassword();
-		//判断手机号是否存在
+		//判断手机号是否存在，id 即为手机号
 		MiaoshaUser user = getById(Long.parseLong(mobile));
 		if(user == null) {
 			throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
 		}
-		//验证密码
+		//验证密码与用户查询的密码时候相同
 		String dbPass = user.getPassword();
 		String saltDB = user.getSalt();
+		//两次加密的密码
 		String calcPass = MD5Util.formPassToDBPass(formPass, saltDB);
 		//用户输入的加密密码和数据库的是否相同
 		if(!calcPass.equals(dbPass)) {
 			throw new GlobalException(CodeMsg.PASSWORD_ERROR);
 		}
-		//登录成功后,生成cookie
+		//登录成功后,生成随机cookie
 		String token = UUIDUtil.uuid();
 		//response 中返回 cookie,下次再请求的时候会再 requset中,
 		// 没有产生一个新的 cookie,把旧的 cookie 放进去就够了

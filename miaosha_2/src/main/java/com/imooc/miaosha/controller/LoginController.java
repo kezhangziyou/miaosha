@@ -27,13 +27,13 @@ public class LoginController {
 	private static Logger log = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
-	MiaoshaUserService userService;
+	MiaoshaUserService miaoshaUserService;
 	
 	@Autowired
 	RedisService redisService;
 
 	/**
-	 *登录页面，http://localhost:8080/login/to_login，18912341234，123456
+	 *登录页面，http://localhost:8080/login/to_login，18912341234，123456；17671718605 111111
 	 * @return
 	 */
     @RequestMapping("/to_login")
@@ -42,7 +42,7 @@ public class LoginController {
     }
 
 	/**
-	 *
+	 *登录校验，登录成功后会跳转到商品页面
 	 * @param response
 	 * @param loginVo
 	 * @return
@@ -52,7 +52,7 @@ public class LoginController {
     public Result<Boolean> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {
     	log.info(loginVo.toString());
     	//登录
-    	userService.login(response, loginVo);
+		miaoshaUserService.login(response, loginVo);
     	return Result.success(true);
     }
 }

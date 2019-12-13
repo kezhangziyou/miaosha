@@ -35,9 +35,9 @@ public class RedisService {
 
 	/**
 	 * 设置对象
-	 * @param prefix
-	 * @param key
-	 * @param value
+	 * @param prefix redis 的key的前缀
+	 * @param key key 的值
+	 * @param value value 的对象
 	 * @param <T>
 	 * @return
 	 */
@@ -112,7 +112,13 @@ public class RedisService {
 			  returnToPool(jedis);
 		 }
 	}
-	
+
+	/**
+	 * 把对象转为 string
+	 * @param value
+	 * @param <T>
+	 * @return
+	 */
 	private <T> String beanToString(T value) {
 		if(value == null) {
 			return null;
@@ -129,6 +135,13 @@ public class RedisService {
 		}
 	}
 
+	/**
+	 * 把json字符串对象变为对象
+	 * @param str
+	 * @param clazz
+	 * @param <T>
+	 * @return
+	 */
 	@SuppressWarnings("unchecked")
 	private <T> T stringToBean(String str, Class<T> clazz) {
 		if(str == null || str.length() <= 0 || clazz == null) {
