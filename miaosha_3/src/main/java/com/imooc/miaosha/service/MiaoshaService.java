@@ -22,11 +22,17 @@ public class MiaoshaService {
 	@Autowired
 	OrderService orderService;
 
+	/**
+	 * 减库存，下订单
+	 * @param user
+	 * @param goods
+	 * @return
+	 */
 	@Transactional
 	public OrderInfo miaosha(MiaoshaUser user, GoodsVo goods) {
 		//减库存 下订单 写入秒杀订单
 		goodsService.reduceStock(goods);
-		//order_info maiosha_order
+		//下订单，order 和MiaoshaOrder
 		return orderService.createOrder(user, goods);
 	}
 	

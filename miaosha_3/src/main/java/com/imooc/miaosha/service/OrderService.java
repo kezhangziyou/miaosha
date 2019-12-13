@@ -17,7 +17,13 @@ public class OrderService {
 	
 	@Autowired
 	OrderDao orderDao;
-	
+
+	/**
+	 * 查询用户是否秒杀了次商品
+	 * @param userId 用户 id
+	 * @param goodsId 商品 id
+	 * @return
+	 */
 	public MiaoshaOrder getMiaoshaOrderByUserIdGoodsId(long userId, long goodsId) {
 		return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
 	}
@@ -37,7 +43,7 @@ public class OrderService {
 		long orderId = orderDao.insert(orderInfo);
 		MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
 		miaoshaOrder.setGoodsId(goods.getId());
-		miaoshaOrder.setOrderId(orderId);
+		miaoshaOrder.setOrderId(orderInfo.getId());
 		miaoshaOrder.setUserId(user.getId());
 		orderDao.insertMiaoshaOrder(miaoshaOrder);
 		return orderInfo;

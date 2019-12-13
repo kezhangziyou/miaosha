@@ -21,12 +21,12 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
 	@Autowired
 	MiaoshaUserService userService;
-	
+	@Override
 	public boolean supportsParameter(MethodParameter parameter) {
 		Class<?> clazz = parameter.getParameterType();
 		return clazz==MiaoshaUser.class;
 	}
-
+	@Override
 	public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer,
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
@@ -43,6 +43,9 @@ public class UserArgumentResolver implements HandlerMethodArgumentResolver {
 
 	private String getCookieValue(HttpServletRequest request, String cookiName) {
 		Cookie[]  cookies = request.getCookies();
+		if(cookies == null || cookies.length <= 0){
+			return null;
+		}
 		for(Cookie cookie : cookies) {
 			if(cookie.getName().equals(cookiName)) {
 				return cookie.getValue();

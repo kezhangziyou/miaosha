@@ -19,14 +19,20 @@ import com.imooc.miaosha.vo.GoodsVo;
 public class GoodsController {
 
 	@Autowired
-	MiaoshaUserService userService;
+	MiaoshaUserService miaoshaUserService;
 	
 	@Autowired
 	RedisService redisService;
 	
 	@Autowired
 	GoodsService goodsService;
-	
+
+	/**
+	 * 秒杀商品页面
+	 * @param model
+	 * @param user
+	 * @return
+	 */
     @RequestMapping("/to_list")
     public String list(Model model,MiaoshaUser user) {
     	model.addAttribute("user", user);
@@ -35,10 +41,16 @@ public class GoodsController {
     	model.addAttribute("goodsList", goodsList);
         return "goods_list";
     }
-    
+
+	/**
+	 * 秒杀商品详情页
+	 * @param model 视图解析器
+	 * @param user
+	 * @param goodsId
+	 * @return
+	 */
     @RequestMapping("/to_detail/{goodsId}")
-    public String detail(Model model,MiaoshaUser user,
-    		@PathVariable("goodsId")long goodsId) {
+    public String detail(Model model,MiaoshaUser user,@PathVariable("goodsId")long goodsId) {
     	model.addAttribute("user", user);
     	
     	GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
@@ -50,10 +62,12 @@ public class GoodsController {
     	
     	int miaoshaStatus = 0;
     	int remainSeconds = 0;
-    	if(now < startAt ) {//秒杀还没开始，倒计时
+		//秒杀还没开始，倒计时
+    	if(now < startAt ) {
     		miaoshaStatus = 0;
     		remainSeconds = (int)((startAt - now )/1000);
-    	}else  if(now > endAt){//秒杀已经结束
+    	}else  if(now > endAt){
+			//秒杀已经结束
     		miaoshaStatus = 2;
     		remainSeconds = -1;
     	}else {//秒杀进行中

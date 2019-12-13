@@ -35,7 +35,14 @@ public class MiaoshaController {
 	
 	@Autowired
 	MiaoshaService miaoshaService;
-	
+
+	/**
+	 * 秒杀商品
+	 * @param model
+	 * @param user 用户
+	 * @param goodsId
+	 * @return
+	 */
     @RequestMapping("/do_miaosha")
     public String list(Model model,MiaoshaUser user,
     		@RequestParam("goodsId")long goodsId) {
@@ -50,7 +57,7 @@ public class MiaoshaController {
     		model.addAttribute("errmsg", CodeMsg.MIAO_SHA_OVER.getMsg());
     		return "miaosha_fail";
     	}
-    	//判断是否已经秒杀到了
+    	//判断用户是否已经秒杀到了该商品
     	MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
     	if(order != null) {
     		model.addAttribute("errmsg", CodeMsg.REPEATE_MIAOSHA.getMsg());

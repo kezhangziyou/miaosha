@@ -3,7 +3,12 @@ package com.imooc.miaosha.vo;
 import java.util.Date;
 
 import com.imooc.miaosha.domain.Goods;
-
+/**
+ * @description 秒杀商品的详细信息
+ * @author zhangke
+ * @date 2:45 PM 2019/12/13
+ * @version 1.0
+ **/
 public class GoodsVo extends Goods{
 	private Double miaoshaPrice;
 	private Integer stockCount;
