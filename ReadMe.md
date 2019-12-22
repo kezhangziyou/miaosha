@@ -5,38 +5,42 @@
 
 ## 秒杀实战（目录结构说明）
 
-- [miaosha_1](https://github.com/kezhangziyou/Test/tree/dev/src/algorithm)：第1章-课程介绍及项目框架搭建
+- [miaosha_1](https://github.com/kezhangziyou/miaosha/tree/master/miaosha_1)：第1章-课程介绍及项目框架搭建
     * 1.Spring Boot环境搭建
     * 2.集成Thymeleaf , Result结果封装
     * 3.集成Mybatis+ Druid
     * 4.集成Jedis+ Redis安装+通用缓存Key封装
-- [miaosha_2](https://github.com/kezhangziyou/Test/tree/dev/src/Collections)：第2章-实现用户登录以及分布式session功能
+- [miaosha_2](https://github.com/kezhangziyou/miaosha/tree/master/miaosha_2)：第2章-实现用户登录以及分布式session功能
     * 1.数据库设计
     * 2.明文密码两次MD5处理
     * 3.JSR303参数检验+全局异常处理器
-    * 4.分布式Session
+    * 4.分布式Session：uuid 和用户信息绑定，存储到 redis，同时把客户端的 session 存到 redis 同时控制生命周期
 
-- [miaosha_3](https://github.com/kezhangziyou/Test/tree/dev/src/Collections)：第3章-秒杀功能开发及管理后台
+- [miaosha_3](https://github.com/kezhangziyou/miaosha/tree/master/miaosha_3)：第3章-秒杀功能开发及管理后台
     * 1.数据库设计
     * 2.商品列表页
     * 3.商品详情页
     * 4.订单详情页
-- [miaosha_4](https://github.com/kezhangziyou/Test/tree/dev/src/Collections)：第4章-秒杀压测-Jmeter压力测试
-    * 1.jmeter 的安装
-    * 2.jmeter 的使用
-- [miaosha_5](https://github.com/kezhangziyou/Test/tree/dev/src/Collections)：第5章-页面级高并发秒杀优化（Redis缓存+静态化分离）
+    
+- [miaosha_4](https://github.com/kezhangziyou/miaosha/tree/master/miaosha_4)：第4章-秒杀压测-Jmeter压力测试
+    * 1.jmeter的安装
+    * 2.jmeter的使用
+    
+- [miaosha_5](https://github.com/kezhangziyou/miaosha/tree/master/miaosha_5)：第5章-页面级高并发秒杀优化（Redis缓存+静态化分离）
     * 1.页面缓存+ URL缓存+对象缓存
     * 2.页面静态化,前后端分离
     * 3.静态资源优化
     * 4. CDN优化
-- [miaosha_6](https://github.com/kezhangziyou/Test/tree/dev/src/Collections)：第6章-服务级高并发秒杀优化（RabbitMQ+接口优化）
+    
+- [miaosha_6](https://github.com/kezhangziyou/miaosha/tree/master/miaosha_6)：第6章-服务级高并发秒杀优化（RabbitMQ+接口优化）
     * 1.Redis预减库存减少数据库访问
     * 2.内存标记减少Redis访问
     * 3.请求先入队缓冲,异步下单,增强用户体验
     * 4.RabbitMQ与Spring Boot集成
     * 5.Ngin水平扩展
     * 6.mycat
-- [miaosha_7](https://github.com/kezhangziyou/Test/tree/dev/src/Collections)：第7章-图形验证码及恶意防刷
+    
+- [miaosha_7](hhttps://github.com/kezhangziyou/miaosha/tree/master/miaosha_7)：第7章-图形验证码及恶意防刷
     * 1.秒杀接口地址隐藏
     * 2.数学公式验证码
     * 3.接口防刷
