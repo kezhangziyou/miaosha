@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.imooc</groupId>
-  <artifactId>miaosha</artifactId>
+  <artifactId>miaosha_5</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
   
@@ -13,7 +13,7 @@
     <version>1.5.8.RELEASE</version>
 </parent>
 
-  <name>miaosha_2</name>
+  <name>miaosha_5</name>
   <url>http://maven.apache.org</url>
 
   <properties>
